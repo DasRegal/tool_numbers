@@ -19,6 +19,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
+#include <limits.h>
 #include "unity.h"
 #include "tool_numbers.h"
 
@@ -29,46 +30,6 @@
 /** @defgroup TESTS
   * @brief Tests for Tool numbers module
   * @{
-  */
-
-/** @defgroup TESTS_Private_TypesDefinitions
-  * @{
-  */
-
-/**
-  * @}
-  */
-
-/** @defgroup TESTS_Private_Defines
-  * @{
-  */
-
-/**
-  * @}
-  */
-
-/** @defgroup TESTS_Private_Macros
-  * @{
-  */
-
-/**
-  * @}
-  */
-
-/** @defgroup TESTS_Private_Variables
-  * @{
-  */
-
-/**
-  * @}
-  */
-
-/** @defgroup TESTS_Private_FunctionPrototypes
-  * @{
-  */
-
-/**
-  * @}
   */
 
 /** @defgroup TESTS_Private_Functions
@@ -83,7 +44,7 @@
   */
 void setUP( void )
 {
-
+    
 }
 
 /**
@@ -93,16 +54,64 @@ void setUP( void )
   */
 void tearDown( void )
 {
-
+    InitNumber();
 }
 
-/**
-  * @brief
-  * @param
-  *
-  *     @arg
-  * @retval none
-  */
+void test_init_val( void )
+{
+    int result = 0;
+    result = GetNumber();
+    TEST_ASSERT_EQUAL_INT( 0, result );
+}
+
+void test_increment_number( void )
+{
+    int result = 0;
+    IncrementNumber();
+    result = GetNumber();
+    TEST_ASSERT_EQUAL_INT( 1, result );
+}
+
+void test_init_max_val( void )
+{
+    // TEST_IGNORE();
+    int result = 0;
+    for (int i = 0; i < INT_MAX; i++)
+    {
+        IncrementNumber();
+    }
+    result = GetNumber();
+    TEST_ASSERT_EQUAL_INT( INT_MAX, result );
+}
+
+void test_set_max_val( void )
+{
+    int result = 0;
+    
+    SetMaximumValue(3);
+
+    IncrementNumber();
+    IncrementNumber();
+    IncrementNumber();
+
+    result = GetNumber();
+    TEST_ASSERT_EQUAL_INT( 3, result );
+}
+
+void test_reset_val_if_reach_max( void )
+{
+    int result = 0;
+
+    SetMaximumValue(3);
+
+    IncrementNumber();
+    IncrementNumber();
+    IncrementNumber();
+    IncrementNumber();
+
+    result = GetNumber();
+    TEST_ASSERT_EQUAL_INT( 0, result );
+}
 
 /**
   * @}
