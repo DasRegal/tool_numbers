@@ -34,6 +34,7 @@
   * @{
   */
 
+void InitNumber      (void);
 int  GetNumber       (void);
 void IncrementNumber (void);
 void SetMaximumValue (int maximumValue);

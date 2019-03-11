@@ -48,6 +48,17 @@ static int maxValue_      = INT_MAX;
   * @{
   */
 
+/**
+  * @brief Init module
+  * @param  None
+  * @retval None
+  */
+
+void InitNumber (void)
+{
+    currentNumber_ = 0;
+    maxValue_      = INT_MAX;
+}
 
 /**
   * @brief Get current number
@@ -73,7 +84,7 @@ void IncrementNumber (void)
 }
 
 /**
-  * @brief Get current number 
+  * @brief Set maximum value of Number 
   * @param maximumValue
   *   This parameter can have a value in range from 0 to maximum value of int.
   * @retval None
