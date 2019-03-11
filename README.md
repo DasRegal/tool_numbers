@@ -40,3 +40,9 @@ PASSED:  5
 FAILED:  0
 IGNORED: 0
 ```
+# Generate Documentation
+```
+> cd .\DoxyGen
+> .\genDoc.bat
+```
+Run in Documentation folder `index.html`
